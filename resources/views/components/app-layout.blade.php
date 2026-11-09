@@ -1,61 +1,151 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title ?? config('app.name') }} - {{ config('app.name') }}</title>
-    <meta name="description" content="{{ $description ?? '' }}">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>{{ $title ?? 'PT Indonesian Fabrication Global' }} - Solusi Terpercaya Fabrikasi & Erection Struktur Baja</title>
+    <meta name="description" content="{{ $description ?? 'Spesialis Konstruksi Bangunan Baja Komersial, Industri, dan Infrastruktur Nasional dengan Kualitas, Safety, dan Ketepatan Waktu Tinggi.' }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#E52320',
+                            blue: '#0F52BA',
+                            dark: '#111827',
+                            card: '#1F2937',
+                            accent: '#2563EB'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Poppins', sans-serif; }
-        .glass-effect { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
-        .mobile-menu-item { @apply block px-6 py-4 text-gray-700 hover:bg-gray-100 hover:text-blue-600 transition-all duration-200 border-b border-gray-100 text-lg; }
-        .mobile-menu-item.active { @apply bg-blue-50 text-blue-600 border-l-4 border-blue-600; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Montserrat', sans-serif; }
+        .bg-industrial-pattern {
+            background-color: #0d1117;
+            background-image: radial-gradient(#21262d 1px, transparent 1px);
+            background-size: 16px 16px;
+        }
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <nav class="glass-effect sticky top-0 z-50 w-full border-b border-gray-200">
+<body class="bg-gray-950 text-gray-100 antialiased selection:bg-brand-red selection:text-white">
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/95 backdrop-blur-md border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">IFG</div>
-                    <span class="font-bold text-xl text-gray-900 tracking-tight">{{ config('app.name') }}</span>
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-tr from-brand-blue to-brand-red rounded-lg p-0.5 flex items-center justify-center font-bold text-xl tracking-tighter">
+                        <div class="bg-gray-900 w-full h-full rounded-[7px] flex items-center justify-center text-white">IFG</div>
+                    </div>
+                    <div>
+                        <span class="text-lg font-black tracking-wider text-white block leading-none">PT IFG</span>
+                        <span class="text-[10px] text-gray-400 tracking-widest block mt-0.5 font-semibold">FABRICATION GLOBAL</span>
+                    </div>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ route('home') }}" class="mobile-menu-item text-gray-600 hover:text-blue-600 font-medium {{ request()->routeIs('home') ? 'text-blue-600' : '' }}">Beranda</a>
-                    <a href="{{ route('about') }}" class="mobile-menu-item text-gray-600 hover:text-blue-600 font-medium {{ request()->routeIs('about') ? 'text-blue-600' : '' }}">Tentang Kami</a>
-                    <a href="{{ route('services') }}" class="mobile-menu-item text-gray-600 hover:text-blue-600 font-medium {{ request()->routeIs('services') ? 'text-blue-600' : '' }}">Layanan</a>
-                    <a href="{{ route('portfolio') }}" class="mobile-menu-item text-gray-600 hover:text-blue-600 font-medium {{ request()->routeIs('portfolio') ? 'text-blue-600' : '' }}">Portfolio</a>
-                    <a href="{{ route('contact') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md font-medium transition-colors duration-200">Kontak</a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide">
+                    <a href="#about" class="hover:text-brand-red transition-colors">TENTANG KAMI</a>
+                    <a href="#visi-misi" class="hover:text-brand-red transition-colors">VISI & MISI</a>
+                    <a href="#services" class="hover:text-brand-red transition-colors">LAYANAN</a>
+                    <a href="#method" class="hover:text-brand-red transition-colors">METODE</a>
+                    <a href="#portfolio" class="hover:text-brand-red transition-colors">PORTOFOLIO</a>
+                    <a href="#legalitas" class="hover:text-brand-red transition-colors">LEGALITAS</a>
+                    <a href="#contact" class="hover:text-brand-red transition-colors">KONTAK</a>
                 </div>
+
+                <!-- CTA Button (Desktop) -->
+                <div class="hidden sm:block">
+                    <a href="https://wa.me/6281315419958" target="_blank" class="bg-brand-red hover:bg-red-700 text-white px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all duration-300 shadow-lg shadow-red-600/30 flex items-center space-x-2">
+                        <i class="fab font-bold fa-whatsapp"></i>
+                        <span>HUBUNGI KAMI</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger) -->
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                    <button id="menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Menu Mobile">
+                        <i class="fas fa-bars text-2xl" id="menu-icon"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="{{ route('home') }}" class="mobile-menu-item {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a>
-                <a href="{{ route('about') }}" class="mobile-menu-item {{ request()->routeIs('about') ? 'active' : '' }}">Tentang Kami</a>
-                <a href="{{ route('services') }}" class="mobile-menu-item {{ request()->routeIs('services') ? 'active' : '' }}">Layanan</a>
-                <a href="{{ route('portfolio') }}" class="mobile-menu-item {{ request()->routeIs('portfolio') ? 'active' : '' }}">Portfolio</a>
-                <a href="{{ route('contact') }}" class="block px-6 py-4 mt-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-center font-medium transition-colors duration-200">Kontak Kami</a>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-950 border-b border-gray-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#about" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">TENTANG KAMI</a>
+            <a href="#visi-misi" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">VISI & MISI</a>
+            <a href="#services" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">LAYANAN</a>
+            <a href="#method" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">METODE</a>
+            <a href="#portfolio" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">PORTOFOLIO</a>
+            <a href="#legalitas" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">LEGALITAS</a>
+            <a href="#contact" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2">KONTAK</a>
+            <div class="pt-2">
+                <a href="https://wa.me/6281315419958" target="_blank" class="w-full bg-brand-red text-white py-3 rounded-lg text-sm font-bold tracking-wide flex items-center justify-center space-x-2">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>HUBUNGI KAMI</span>
+                </a>
             </div>
         </div>
     </nav>
-    <main>
-        {{ $slot }}
-    </main>
-    <footer class="bg-gray-900 text-white mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+
+    {{ $slot }}
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-8 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 PT Indonesian Fabrication Global. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6281315419958" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 transition-all duration-300 hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- SCRIPT JAVASCRIPT UNTUK MENU MOBILE -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        // Otomatis tutup menu saat link diklik
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
+
                 <div>
                     <div class="flex items-center gap-2 mb-4">
                         <div class="w-6 h-6 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">IFG</div>
