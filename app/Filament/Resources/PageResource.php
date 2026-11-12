@@ -4,9 +4,13 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -15,13 +19,11 @@ class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document';
-
-    protected static ?string $navigationLabel = 'Halaman';
+        protected static ?string $navigationLabel = 'Halaman';
 
     protected static ?string $pluralModelLabel = 'Halaman';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form
             ->schema([
@@ -54,13 +56,13 @@ class PageResource extends Resource
             ->filters([
                 Tables\Filters\TernaryFilter::make('is_published'),
             ])
-            ->actions([
-                Tables\Actions\EditAction::class,
-                Tables\Actions\DeleteAction::class,
+            ->recordActions([
+                EditAction::make(),
+                DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::class,
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }

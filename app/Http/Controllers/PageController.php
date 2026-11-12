@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -49,6 +50,25 @@ class PageController extends Controller
         return view('portfolio', [
             'page' => $page,
             'settings' => $settings,
+        ]);
+    }
+
+    public function solutions()
+    {
+        $pages = Page::published()->orderByDesc('created_at')->get();
+
+        return view('solutions.index', [
+            'pages' => $pages,
+        ]);
+    }
+
+    public function showSolution(string $slug)
+    {
+        $page = Page::published()->where('slug', $slug)->firstOrFail();
+
+        return view('solutions.show', [
+            'page' => $page,
+            'description' => Str::limit(strip_tags($page->content ?? ''), 160),
         ]);
     }
 

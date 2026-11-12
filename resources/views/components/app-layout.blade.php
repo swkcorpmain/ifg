@@ -46,7 +46,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
-                <div class="flex items-center space-x-3">
+                <div class="flex flex-shrink-0 items-center space-x-3">
                     <div class="w-12 h-12 bg-gradient-to-tr from-brand-blue to-brand-red rounded-lg p-0.5 flex items-center justify-center font-bold text-xl tracking-tighter">
                         <div class="bg-gray-900 w-full h-full rounded-[7px] flex items-center justify-center text-white">IFG</div>
                     </div>
@@ -57,26 +57,27 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide">
-                    <a href="#about" class="hover:text-brand-red transition-colors">TENTANG KAMI</a>
-                    <a href="#visi-misi" class="hover:text-brand-red transition-colors">VISI & MISI</a>
-                    <a href="#services" class="hover:text-brand-red transition-colors">LAYANAN</a>
-                    <a href="#method" class="hover:text-brand-red transition-colors">METODE</a>
-                    <a href="#portfolio" class="hover:text-brand-red transition-colors">PORTOFOLIO</a>
-                    <a href="#legalitas" class="hover:text-brand-red transition-colors">LEGALITAS</a>
-                    <a href="#contact" class="hover:text-brand-red transition-colors">KONTAK</a>
+                <div class="hidden flex-1 items-center justify-between pr-4 text-sm font-semibold tracking-wide xl:flex">
+                    <a href="{{ route('home') }}#about" class="whitespace-nowrap transition-colors hover:text-brand-red">TENTANG KAMI</a>
+                    <a href="{{ route('home') }}#visi-misi" class="whitespace-nowrap transition-colors hover:text-brand-red">VISI & MISI</a>
+                    <a href="{{ route('home') }}#services" class="whitespace-nowrap transition-colors hover:text-brand-red">LAYANAN</a>
+                    <a href="{{ route('solutions.index') }}" class="whitespace-nowrap transition-colors hover:text-brand-red {{ request()->routeIs('solutions.*') ? 'text-brand-red' : '' }}">SOLUSI IFG</a>
+                    <a href="{{ route('home') }}#method" class="whitespace-nowrap transition-colors hover:text-brand-red">METODE</a>
+                    <a href="{{ route('home') }}#portfolio" class="whitespace-nowrap transition-colors hover:text-brand-red">PORTOFOLIO</a>
+                    <a href="{{ route('home') }}#legalitas" class="whitespace-nowrap transition-colors hover:text-brand-red">LEGALITAS</a>
+                    <a href="{{ route('home') }}#contact" class="whitespace-nowrap transition-colors hover:text-brand-red">KONTAK</a>
                 </div>
 
                 <!-- CTA Button (Desktop) -->
-                <div class="hidden sm:block">
-                    <a href="https://wa.me/6281315419958" target="_blank" class="bg-brand-red hover:bg-red-700 text-white px-5 py-2.5 rounded-lg text-sm font-bold tracking-wide transition-all duration-300 shadow-lg shadow-red-600/30 flex items-center space-x-2">
+                <div class="hidden flex-shrink-0 xl:block">
+                    <a href="https://wa.me/6281315419958" target="_blank" class="flex whitespace-nowrap items-center space-x-2 rounded-lg bg-brand-red px-5 py-2.5 text-sm font-bold tracking-wide text-white shadow-lg shadow-red-600/30 transition-all duration-300 hover:bg-red-700">
                         <i class="fab font-bold fa-whatsapp"></i>
-                        <span>HUBUNGI KAMI</span>
+                        <span class="whitespace-nowrap">HUBUNGI KAMI</span>
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button (Hamburger) -->
-                <div class="md:hidden flex items-center">
+                <div class="flex items-center xl:hidden">
                     <button id="menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Menu Mobile">
                         <i class="fas fa-bars text-2xl" id="menu-icon"></i>
                     </button>
@@ -85,14 +86,15 @@
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-950 border-b border-gray-800 px-4 pt-3 pb-6 space-y-3">
-            <a href="#about" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">TENTANG KAMI</a>
-            <a href="#visi-misi" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">VISI & MISI</a>
-            <a href="#services" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">LAYANAN</a>
-            <a href="#method" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">METODE</a>
-            <a href="#portfolio" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">PORTOFOLIO</a>
-            <a href="#legalitas" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">LEGALITAS</a>
-            <a href="#contact" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2">KONTAK</a>
+        <div id="mobile-menu" class="hidden xl:hidden bg-gray-950 border-b border-gray-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="{{ route('home') }}#about" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">TENTANG KAMI</a>
+            <a href="{{ route('home') }}#visi-misi" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">VISI & MISI</a>
+            <a href="{{ route('home') }}#services" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">LAYANAN</a>
+            <a href="{{ route('solutions.index') }}" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">SOLUSI IFG</a>
+            <a href="{{ route('home') }}#method" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">METODE</a>
+            <a href="{{ route('home') }}#portfolio" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">PORTOFOLIO</a>
+            <a href="{{ route('home') }}#legalitas" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2 border-b border-gray-900">LEGALITAS</a>
+            <a href="{{ route('home') }}#contact" class="mobile-link block text-sm font-semibold text-gray-300 hover:text-brand-red py-2">KONTAK</a>
             <div class="pt-2">
                 <a href="https://wa.me/6281315419958" target="_blank" class="w-full bg-brand-red text-white py-3 rounded-lg text-sm font-bold tracking-wide flex items-center justify-center space-x-2">
                     <i class="fab fa-whatsapp text-lg"></i>
